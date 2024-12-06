@@ -379,6 +379,8 @@
 
     <script>
         let editor;
+        // 配置后端 API 地址
+        const API_BASE_URL = 'https://60.205.177.39:5000';  // 在部署时更改为实际的后端地址
         
         // 初始化 Monaco Editor
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
@@ -461,7 +463,7 @@
             const options = Object.fromEntries(formData.entries());
             
             try {
-                const response = await fetch('https://60.205.177.39:5000/process', {
+                const response = await fetch(`${API_BASE_URL}/process`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
